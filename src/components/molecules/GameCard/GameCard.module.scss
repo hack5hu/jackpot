@@ -1,0 +1,39 @@
+@import "@/globalStyles/colors.scss";
+@import '@/globalStyles/variables.scss';
+
+.card {
+ flex: 0 0 auto;
+  position: relative;
+  width: 171px;
+  border-radius: 6px;
+  margin-left: 0.5rem;
+  margin-top: 0.75rem;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 140px;
+    height: 190px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    width: 171px;
+    height: 227px;
+  }
+}
+
+
+.imageWrapper {
+  position: relative;
+  width: 171px;
+  height: 227px;
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 140px;
+    height: 190px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    width: 171px;
+    height: 227px;
+  }
+}

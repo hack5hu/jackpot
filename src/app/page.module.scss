@@ -1,0 +1,9 @@
+@import "@/globalStyles/colors.scss";
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $background-primary;
+  padding: 8px 16px;
+}

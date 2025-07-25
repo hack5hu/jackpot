@@ -1,0 +1,113 @@
+@import '@/globalStyles/colors.scss';
+
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+.viewAllControl {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  .arrowButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    &:hover:not(.disabled) {
+      svg {
+        transform: scale(1.2);
+        filter: brightness(2) grayscale(0.2);
+      }
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+
+      svg {
+        filter: grayscale(1);
+      }
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      svg {
+        width: 0.875rem;
+        height: 0.875rem;
+      }
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+  }
+
+  .viewAllText {
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    background-color: $border-secondary;
+    margin-right: 10px;
+    padding: 5px 15px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    line-height: 18px;
+    border: none;
+    height: 34px;
+    width: 79px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 12.5px;
+      padding: 4px 12px;
+      width: 75px;
+      height: 34px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      font-size: 13px;
+      padding: 6px 18px;
+      width: 90px;
+      height: 36px;
+    }
+  }
+}
+
+.arrows {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  border-radius: 6px;
+  background-color: $border-secondary;
+  padding: 6px;
+  width: 56px;
+  height: 34px;
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 56px;
+    height: 34px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    width: 56px;
+    height: 38px;
+  }
+}

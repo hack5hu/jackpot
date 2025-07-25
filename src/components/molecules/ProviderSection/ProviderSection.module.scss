@@ -1,0 +1,62 @@
+@import '@/globalStyles/variables.scss';
+@import '@/globalStyles/colors.scss';
+
+.wrapper {
+margin-top: 10px;
+}
+
+.heading {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.scrollRow {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+  scroll-snap-type: x mandatory;
+  &::-webkit-scrollbar {
+    height: 0px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+}
+
+.logoWrapper {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  scroll-snap-align: start;
+  gap: 0.5rem;
+
+}
+
+.logo {
+  width: 160px;
+  height: 100px;
+  object-fit: contain;
+  padding-right: 10px;
+}
+
+.name {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: white;
+}
+.iconWrapper {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 10px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

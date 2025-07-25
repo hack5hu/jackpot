@@ -1,0 +1,57 @@
+@import '@/globalStyles/colors';
+
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 6px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    gap: 10px;
+  }
+}
+
+.text {
+  font-family: 'Font 1', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.25rem; // ~20px
+  line-height: 31.6px;
+  letter-spacing: 0.8px;
+  color: $white;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 1rem; // 16px
+    line-height: 24px;
+    letter-spacing: 0.5px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: 1.5rem; // 24px
+    line-height: 34px;
+  }
+}
+
+.icon {
+  display: block;
+  margin-right: 8px;
+
+  @media (max-width: $breakpoint-mobile) {
+    margin-right: 6px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,21 @@
+.arrowButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon {
+    transition: transform 0.2s ease, fill 0.2s ease;
+    fill: #a29aac;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover .icon {
+    transform: scale(1.2);
+    fill: #ffffff;
+  }
+}

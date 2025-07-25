@@ -1,0 +1,40 @@
+@import "@/globalStyles/colors.scss";
+
+.tabBar {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding: 10px 0;
+  padding-bottom: 20px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tab {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;  
+  gap: 3px;
+  background: transparent; 
+  color: $text-default;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-style:normal;
+  border: 2px solid $border-secondary;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  white-space: nowrap;
+  transition: all .2s ease-in-out;
+  height: 32px;
+
+  
+}
+
+.active {
+  background: $primary-accent;
+}

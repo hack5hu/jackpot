@@ -1,0 +1,38 @@
+@import "src/globalStyles/colors.scss";
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  border: 2px solid $border-secondary;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  background-color: $midnight-violet;
+  color: white;
+  margin-bottom: 5px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  width: 100%;
+  font-size: 13px;
+  padding-left: 10px;
+  font-weight: 400;
+  line-height: 100%;
+  &::placeholder {
+    color: $muted-violet;
+    letter-spacing: 0.3px;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+}
+.icon {
+  position: relative;
+  align-self: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
