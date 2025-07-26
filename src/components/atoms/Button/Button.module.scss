@@ -34,7 +34,6 @@ $breakpoint-desktop: 1024px;
   }
 }
 
-// 🔷 Primary Button
 .primary {
   --font-size: 15px;
   user-select: none;
@@ -57,7 +56,6 @@ $breakpoint-desktop: 1024px;
   }
 }
 
-// ⚪️ Secondary Button
 .secondary {
   margin-right: 5px;
   color: $white-lilac;
@@ -77,7 +75,6 @@ $breakpoint-desktop: 1024px;
   }
 }
 
-// ⬛ Icon Button
 .icon {
   width: 44px;
   height: 44px;

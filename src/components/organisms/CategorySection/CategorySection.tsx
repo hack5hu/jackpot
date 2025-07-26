@@ -6,7 +6,7 @@ import Image from "next/image";
 import CrossArrowIcon from "@/assets/icons/CrossArrowIcon";
 import { IMAGES } from "@/assets/image/image";
 import React, { RefObject } from "react";
-import { Game } from "@/type/GameType";
+import { Game } from "@/types/GameType";
 
 type CategoryMeta = {
   title: string;
@@ -17,7 +17,7 @@ type CategorySectionProps = {
   category: string;
   meta: CategoryMeta;
   games: Game[];
-  scrollRefs:RefObject<HTMLDivElement | null>;
+  scrollRefs: RefObject<HTMLDivElement | null>;
   setSelectedCategory: (cat: string) => void;
 };
 const CategorySection = ({
@@ -29,9 +29,9 @@ const CategorySection = ({
 }: CategorySectionProps) => {
   const limitedGames = games.slice(0, 12);
   const shouldShowViewAll = games.length > 12;
-if (!scrollRefs) {
-  scrollRefs = React.createRef<HTMLDivElement>();
-}
+  if (!scrollRefs) {
+    scrollRefs = React.createRef<HTMLDivElement>();
+  }
   return (
     <div className={styles.section}>
       <div className={styles.header}>
@@ -69,6 +69,4 @@ if (!scrollRefs) {
 };
 
 export default CategorySection;
-
-
 

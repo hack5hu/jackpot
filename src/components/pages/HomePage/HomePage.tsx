@@ -5,7 +5,7 @@ export default function HomePage() {
   const props = useHomePage();
   return (
     <>
-      <div style={{padding:20}}/>
+      <div style={{margin:30}}/>
       <HomeTemplate {...props} />
     </>
   );

@@ -1,19 +1,15 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { FilterState } from "./types";
+import { createGameFilterSlice } from "./actions";
 
-interface FilterState {
-  searchQuery: string;
-  category?: string;
-  vendor?: string;
-  setVendor: (vendor: string) => void;
-  setSearchQuery: (query: string) => void;
-  setFilters: (filters: Partial<FilterState>) => void;
-}
-
-export const useGameFilters = create<FilterState>((set) => ({
-  searchQuery: "",
-  category: undefined,
-  vendor: undefined,
-  setVendor: (vendor) => set({ vendor }),
-  setSearchQuery: (searchQuery) => set({ searchQuery }),
-  setFilters: (filters) => set((state) => ({ ...state, ...filters })),
-}));
+export const useGameFilters = create<FilterState>()(
+  persist(createGameFilterSlice, {
+    name: "game-filters-storage",
+    partialize: (state) => ({
+      searchQuery: state.searchQuery,
+      category: state.category,
+      vendor: state.vendor,
+    }),
+  })
+);

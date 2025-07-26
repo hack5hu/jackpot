@@ -1,16 +1,14 @@
 import { useRef } from "react";
-import { useGameFilters } from "@/store/useGameFilters";
 import { useCasinoGames } from "@/hooks/queries/useCasinoGames";
+import { useSearchGames } from "@/hooks/queries/useSearchGames";
+import { useGameFilters } from "@/store/useGameFilters";
 import { useDebouncedSearchQuery } from "@/hooks/useDebouncedSearchQuery";
 import { useInfiniteScrollTrigger } from "@/hooks/useInfiniteScrollTrigger";
-import { useLastValidSearchItems } from "@/hooks/useLastValidSearchItems";
-import { useCategorizedGames } from "@/hooks/useCategorizedGames";
-import { CATEGORY_META } from "@/constants/constants";
+import { useFilteredGames } from "@/hooks/useFilteredGames";
 import { Vendor } from "@/store/types";
 
-export const useHomePage = () => {
-  const { category, setCategory, vendor, setVendor, sort, setSort } =
-    useGameFilters();
+export const useProvidersPage = () => {
+  const { vendor, setVendor, sort, setSort, searchQuery } = useGameFilters();
 
   const { localQuery, setLocalQuery } = useDebouncedSearchQuery();
 
@@ -20,22 +18,27 @@ export const useHomePage = () => {
     hasNextPage,
     isFetchingNextPage,
     isLoading,
-  } = useCasinoGames({ category: category ?? "" });
+  } = useCasinoGames({
+    vendor: vendor?.id,
+    order: sort?.id,
+  });
+
+  const { data: searchData } = useSearchGames();
 
   const allItems = gameData?.pages.flatMap((p) => p.data.items) || [];
-  const { categorizedGames, mergedItems } = useCategorizedGames(allItems);
-  const { searchedItems, lastValidSearchItems } = useLastValidSearchItems();
+  const searchedItems = searchData?.data.items || [];
 
   const { ref } = useInfiniteScrollTrigger({
     onLoadMore: fetchNextPage,
     hasNextPage,
-    disabled: !!localQuery,
+    disabled: !!searchQuery,
   });
+
+  const { filteredGames } = useFilteredGames({ allItems, searchedItems });
 
   const scrollRefs = useRef<Record<string, React.RefObject<HTMLDivElement>>>(
     {}
   );
-  const scrollProviderRefs = useRef<HTMLDivElement>(null);
 
   const handleClick = (id: Vendor) => {
     setVendor?.(id);
@@ -44,26 +47,19 @@ export const useHomePage = () => {
   return {
     localQuery,
     setLocalQuery,
-    categorizedGames,
-    selectedCategory: category,
-    setSelectedCategory: setCategory,
-    mergedItems,
-    isSearching: !!localQuery,
+    isSearching: !!searchQuery,
     searchedItems,
-    lastValidSearchItems,
     hasNextPage,
     isFetchingNextPage,
     ref,
     scrollRefs,
-    CATEGORY_META,
-    scrollProviderRefs,
     handleClick,
     allItems,
     vendor,
     sort,
     setSort,
-    setVendor,
     isLoading,
+    filteredGames,
   };
 };
 

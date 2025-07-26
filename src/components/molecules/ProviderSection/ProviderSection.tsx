@@ -5,14 +5,22 @@ import IconWithText from "@/components/atoms/IconWithText/IconWithText";
 import { IMAGES } from "@/assets/image/image";
 import ViewAllControl from "../ViewAllWithArrows/ViewAllWithArrows";
 import Link from "next/link";
+import CheckIcon from "@/assets/icons/CheckIcon";
 
+type Provider = { name: string; image: string; id: string };
 type Props = {
-  providers: { name: string; image: string; id: string }[];
+  providers: Provider[];
   scrollRefs: React.RefObject<HTMLDivElement>;
-  handleClick: (id:string) => void;
+  handleClick: (provider: Provider) => void;
+  selectedProvider?: Provider;
 };
 
-const ProviderSection = ({ providers, scrollRefs, handleClick }: Props) => {
+const ProviderSection = ({
+  providers,
+  scrollRefs,
+  handleClick,
+  selectedProvider,
+}: Props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -26,8 +34,13 @@ const ProviderSection = ({ providers, scrollRefs, handleClick }: Props) => {
             key={provider.id}
             href={`/provider/`}
             className={styles.logoWrapper}
-            onClick={() => handleClick(provider.id)}
+            onClick={() => handleClick(provider)}
           >
+            {selectedProvider?.id === provider.id && (
+              <div className={styles.logoTextWrapper}>
+                <CheckIcon />
+              </div>
+            )}
             <Image
               src={provider.image}
               alt={provider.name}
@@ -43,5 +56,8 @@ const ProviderSection = ({ providers, scrollRefs, handleClick }: Props) => {
 };
 
 export default ProviderSection;
+
+
+
 
 

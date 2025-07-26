@@ -4,11 +4,18 @@ import styles from "./Header.module.scss";
 import Image from "next/image";
 import { IMAGES } from "@/assets/image/image";
 import Button from "@/components/atoms/Button/Button";
+import { useGameFilters } from "@/store/useGameFilters";
+import Link from "next/link";
 
 export default function Header() {
+  const { setCategory, setSort } = useGameFilters();
+  const clearFn = () => {
+    setCategory?.("");
+    setSort?.("");
+  };
   return (
-    <header className={styles.header}>
-      <div className={styles.left}>
+    <header className={styles.header} onClick={() => clearFn()}>
+      <Link className={styles.left} href={"/"}>
         <Image
           src={IMAGES.LOGO_ICON}
           alt="Logo"
@@ -23,7 +30,7 @@ export default function Header() {
           height={26}
           className={styles.logoDesktop}
         />
-      </div>
+      </Link>
 
       <div className={styles.right}>
         <div className={styles.iconGroup}>
@@ -51,3 +58,5 @@ export default function Header() {
     </header>
   );
 }
+
+

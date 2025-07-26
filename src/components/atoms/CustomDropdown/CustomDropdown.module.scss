@@ -1,0 +1,101 @@
+@import '@/globalStyles/colors.scss';
+@import '@/globalStyles/variables.scss';
+
+.dropdown {
+  position: relative;
+  width: 100%;
+  max-width: 150px; // default max width
+  margin-top: 5px;
+  animation: fadeIn 0.2s ease;
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.dropdownToggle {
+  background: transparent;
+  color: $white-lilac;
+  padding: 0.5rem 0.75rem;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 6px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  background-color: $bg-secondary;
+  border: 2px solid $border-secondary;
+
+  &:hover {
+    border: 2px solid $icon-orange;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 14px;
+    padding: 0.5rem;
+  }
+
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop - 1) {
+    font-size: 15px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: 16px;
+  }
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: $bg-secondary;
+  border: 1px solid $border-secondary;
+  border-radius: 6px;
+  list-style: none;
+  padding: 8px 0;
+
+  .menuItem {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .active {
+    background-color: $midnight-violet;
+  }
+
+  &:hover {
+    .menuItem.active {
+      background-color: transparent !important;
+    }
+
+    .menuItem:hover {
+      background-color: $midnight-violet !important;
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 14px;
+  }
+
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop ) {
+    font-size: 15px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    font-size: 16px;
+  }
+}

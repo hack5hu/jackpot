@@ -46,12 +46,12 @@ export const GAME_PROVIDERS = [
       "https://cdn.jackpot.bet/images/providers/bgaming.png?format=auto&width=384&quality=75",
     id: "BGaming",
   },
-  {
-    name: "OneTouch",
-    image:
-      "https://cdn.jackpot.bet/images/providers/onetouch.png?format=auto&width=384&quality=75",
-    id: "OneTouch",
-  },
+  // {
+  //   name: "OneTouch",
+  //   image:
+  //     "https://cdn.jackpot.bet/images/providers/onetouch.png?format=auto&width=384&quality=75",
+  //   id: "OneTouch",
+  // },
   {
     name: "Hacksaw",
     image:
@@ -78,3 +78,10 @@ export const GAME_PROVIDERS = [
   },
 ];
 
+export const OPTIONS = [
+  { id: "asc", name: "A-Z" },
+  { id: "desc", name: "Z-A" },
+];
+
+
+export const LIMIT_API = 100;

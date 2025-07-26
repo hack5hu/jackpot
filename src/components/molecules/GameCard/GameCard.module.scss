@@ -9,10 +9,15 @@
   margin-left: 0.5rem;
   margin-top: 0.75rem;
   overflow: hidden;
-
+   &:hover {
+    transform: translateY(-3px) scale(1.00);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+  
+  }
   @media (max-width: $breakpoint-mobile) {
-    width: 140px;
-    height: 190px;
+    width: 130px;
+    height: 180px;
   }
 
   @media (min-width: $breakpoint-desktop) {
@@ -28,8 +33,8 @@
   height: 227px;
 
   @media (max-width: $breakpoint-mobile) {
-    width: 140px;
-    height: 190px;
+    width: 130px;
+    height: 180px;
   }
 
   @media (min-width: $breakpoint-desktop) {

@@ -2,23 +2,38 @@ import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import api from "@/services/api";
 import { useGameFilters } from "@/store/useGameFilters";
 
-const LIMIT = 50;
+const LIMIT = 100;
 
-export const useCasinoGames = ({category}) => {
-  const {  vendor } = useGameFilters();
-console.log("Fetching Casino Games with Category:", category, "Vendor:", vendor);
+type UseCasinoGamesProps = {
+  category?: string;
+  order?: string;
+  vendor?: string;
+};
+
+export const useCasinoGames = ({
+  category,
+  order,
+  vendor,
+}: UseCasinoGamesProps) => {
   return useInfiniteQuery({
-    queryKey: ["casino-games", { category, vendor }],
-    
+    queryKey: ["casino-games", { category, order, vendor }],
     queryFn: async ({ pageParam = 0 }) => {
-      const res = await api.get("/casino/games", {
-        params: {
-          ...(category && { category }),
-          ...(vendor && { vendor }),
-          limit: LIMIT,
-          offset: pageParam,
-        },
-      });
+      const params: Record<string, string | number> = {
+        ...(category && { category }),
+        ...(vendor && { vendor }),
+        ...(order && { order }),
+        limit: LIMIT,
+        offset: pageParam,
+      };
+
+      // 🔍 Log full query URL (for dev/debugging)
+      const queryString = new URLSearchParams(
+        params as Record<string, string>
+      ).toString();
+      console.log("Request URL:", `/casino/games?${queryString}`);
+
+      const res = await api.get("/casino/games", { params });
+
       console.log("Fetched Casino Games:", res.data);
       return res.data;
     },
@@ -47,3 +62,4 @@ export const useSearchGames = () => {
     staleTime: 5 * 60 * 1000, // Optional: avoid refetching repeatedly
   });
 };
+

@@ -1,5 +1,5 @@
 import { CATEGORY_META } from "@/constants/constants";
-import { Game } from "@/type/GameType";
+import { Game } from "@/types/GameType";
 
 export function categorizeGamesByCategory(games: Game[]) {
   const categoryMap: Record<string, Game[]> = {};
@@ -17,8 +17,4 @@ export function categorizeGamesByCategory(games: Game[]) {
 
   return categoryMap;
 }
-
-
-
-
 

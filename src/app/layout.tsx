@@ -3,7 +3,8 @@
 // import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ReactQueryProvider from "@/components/Providers/ProviderPage";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./lib/react-query";
 import Header from "@/components/organisms/Header/Header";
 
 const geistSans = Geist({
@@ -23,11 +24,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ReactQueryProvider>
-          <Header/>
-          {children}</ReactQueryProvider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable}`}
+        style={{ backgroundColor: "#25222D" }}
+      >
+        <QueryClientProvider client={queryClient} >
+          <Header />
+          {children}
+        </QueryClientProvider>
       </body>
     </html>
   );
 }
+
+
+
+
+
+
+

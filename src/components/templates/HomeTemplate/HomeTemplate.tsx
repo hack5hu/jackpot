@@ -6,6 +6,7 @@ import GameCard from "@/components/molecules/GameCard/GameCard";
 import styles from "./HomeTemplate.module.scss";
 import ProviderSection from "@/components/molecules/ProviderSection/ProviderSection";
 import { GAME_PROVIDERS } from "@/constants/constants";
+import Loader from "@/components/atoms/Loader/Loader";
 
 const HomePageTemplate = ({
   localQuery,
@@ -24,6 +25,7 @@ const HomePageTemplate = ({
   CATEGORY_META,
   scrollProviderRefs,
   handleClick,
+  isLoading
 }) => {
   const displayGames = isSearching
     ? searchedItems.length > 0
@@ -40,7 +42,13 @@ const HomePageTemplate = ({
         onChange={(e) => setLocalQuery(e.target.value)}
         placeholder="Search a game..."
         type="text"
+        hint={
+          localQuery.length > 0 && localQuery.length < 3
+            ? "Enter 3 or more characters"
+            : undefined
+        }
       />
+
       <CategoryTabBar
         activeCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
@@ -48,14 +56,15 @@ const HomePageTemplate = ({
 
       {isSearching || selectedCategory ? (
         <div className={styles.grid}>
-          {displayGames.map((game) => (
-            <GameCard key={game.slug} game={game} />
+          {displayGames?.map((game) => (
+            <GameCard key={game?.slug} game={game} />
           ))}
+
           {!isSearching && hasNextPage && <div ref={ref} />}
         </div>
       ) : (
         <>
-          {firstTwoCategories.map(([category, games]) => (
+          {firstTwoCategories?.map(([category, games]) => (
             <CategorySection
               key={category}
               category={category}
@@ -65,13 +74,15 @@ const HomePageTemplate = ({
               setSelectedCategory={setSelectedCategory}
             />
           ))}
-          <ProviderSection
-            providers={GAME_PROVIDERS}
-            scrollRefs={scrollProviderRefs}
-            handleClick={handleClick}
-          />
+          {!isSearching && categoryEntries.length > 0 && (
+            <ProviderSection
+              providers={GAME_PROVIDERS}
+              scrollRefs={scrollProviderRefs}
+              handleClick={handleClick}
+            />
+          )}
 
-          {remainingCategories.map(([category, games]) => (
+          {remainingCategories?.map(([category, games]) => (
             <CategorySection
               key={category}
               category={category}
@@ -83,13 +94,42 @@ const HomePageTemplate = ({
           ))}
         </>
       )}
-
-      {isFetchingNextPage && <p>Loading more...</p>}
+      {(isLoading || isFetchingNextPage) && (
+        <div className={styles.loaderWrapper}>
+          <Loader isLoading={true} />
+        </div>
+      )}
+      {/* {isFetchingNextPage && <Loader isLoading={true} />} */}
     </div>
   );
 };
 
 export default HomePageTemplate;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

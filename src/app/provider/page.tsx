@@ -1,11 +1,16 @@
-'use client';
-import { useGameFilters } from '@/store/useGameFilters';
-import React from 'react'
-
+"use client";
+import ProviderPage from "@/components/pages/Providers/ProviderPage";
+import { useGameFilters } from "@/store/useGameFilters";
+import React from "react";
+import styles from "./Provider.module.scss";
 export default function Provider() {
-    const { vendor } = useGameFilters();
+  const { vendor = "" } = useGameFilters();
   return (
-    
-    <div style={{padding:100}}>{vendor}</div>
-  )
+    <>
+      <div className={styles.main}>
+        <ProviderPage vendor={vendor} />
+      </div>
+    </>
+  );
 }
+
