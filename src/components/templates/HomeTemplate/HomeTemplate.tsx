@@ -13,35 +13,36 @@ import CustomDropdown from "@/components/atoms/CustomDropdown/CustomDropdown";
 
 const HomePageTemplate = () => {
   const {
+    // Search
     localQuery,
     setLocalQuery,
-    categorizedGames,
+    isSearching,
+
+    // Data
+    categoryEntries,
+    firstTwoCategories,
+    remainingCategories,
+
+    // Filters & state
     selectedCategory,
     setSelectedCategory,
-    mergedItems,
-    isSearching,
-    searchedItems,
-    lastValidSearchItems,
-    hasNextPage,
-    isFetchingNextPage,
+    sort,
+    setSort,
+    displayGames,
+
+    // Scroll & Pagination
     ref,
     scrollRefs,
-    CATEGORY_META,
     scrollProviderRefs,
+    hasNextPage,
+    isFetchingNextPage,
+
+    // Meta
+    CATEGORY_META,
     handleClick,
     isLoading,
-    sort,
-    setSort
-  }= useHomePage()
-  const {}= useHomePage()
-  const displayGames = isSearching
-    ? searchedItems.length > 0
-      ? searchedItems
-      : lastValidSearchItems.current
-    : mergedItems;
-  const categoryEntries = Object.entries(categorizedGames);
-  const firstTwoCategories = categoryEntries.slice(0, 2);
-  const remainingCategories = categoryEntries.slice(2);
+  } = useHomePage();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.searchAndFilterWrapper}>
@@ -56,7 +57,9 @@ const HomePageTemplate = () => {
               : undefined
           }
         />
-       {selectedCategory && <CustomDropdown selectedItem={sort} setSelectedItem={setSort!} />}
+        {selectedCategory && (
+          <CustomDropdown selectedItem={sort} setSelectedItem={setSort!} />
+        )}
       </div>
 
       <CategoryTabBar
@@ -115,41 +118,4 @@ const HomePageTemplate = () => {
 };
 
 export default HomePageTemplate;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

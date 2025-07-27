@@ -6,14 +6,12 @@ import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import { DropDownProps, Option } from "@/components/atoms/CustomDropdown/type";
 import { engLang } from "@/baseLocalization/baseLocalization";
 
-
-
 export default function CustomDropdown({
   selectedItem,
   setSelectedItem,
 }: DropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null); // Reference to dropdown for detecting outside clicks
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
@@ -23,7 +21,7 @@ export default function CustomDropdown({
     setSelectedItem(option);
     setIsOpen(false);
   };
-
+  // Close dropdown if click is outside the dropdown area
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -67,11 +65,4 @@ export default function CustomDropdown({
     </div>
   );
 }
-
-
-
-
-
-
-
 

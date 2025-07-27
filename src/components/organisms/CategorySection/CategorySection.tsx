@@ -8,6 +8,10 @@ import { IMAGES } from "@/assets/image/image";
 import React, { useEffect, useState } from "react";
 import { engLang } from "@/baseLocalization/baseLocalization";
 
+/**
+ * CategorySection displays a horizontal scrollable list of games under a specific category.
+ * Includes a header with icon, category name, and "View All" controls.
+ */
 const CategorySection = ({
   category,
   meta,
@@ -22,6 +26,8 @@ const CategorySection = ({
   }
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
+
+  // Setup scroll event listener to determine arrow visibility
   useEffect(() => {
     const container = scrollRefs?.current;
     if (!container) return;
@@ -34,6 +40,7 @@ const CategorySection = ({
       setShowLeft(false);
       setShowRight(false);
 
+      // Delay evaluation for smooth effect
       timeout = setTimeout(() => {
         setShowLeft(container.scrollLeft > 0);
         setShowRight(
@@ -93,7 +100,4 @@ const CategorySection = ({
 };
 
 export default CategorySection;
-
-
-
 

@@ -7,6 +7,14 @@ import { useInfiniteScrollTrigger } from "@/hooks/useInfiniteScrollTrigger";
 import { useFilteredGames } from "@/hooks/useFilteredGames";
 import { Vendor } from "@/store/types";
 
+/**
+ * useProvidersPage
+ * Handles all logic for the Provider screen:
+ * - Fetching games by vendor
+ * - Searching within vendor's games
+ * - Infinite scroll
+ * - Sorting
+ */
 export const useProvidersPage = () => {
   const { vendor, setVendor, sort, setSort, searchQuery } = gameStates();
 
@@ -28,6 +36,10 @@ export const useProvidersPage = () => {
   const allItems = gameData?.pages.flatMap((p) => p.data.items) || [];
   const searchedItems = searchData?.data.items || [];
 
+  /**
+   * Trigger fetchNextPage when sentinel is in view
+   * Disabled during active search
+   */
   const { ref } = useInfiniteScrollTrigger({
     onLoadMore: fetchNextPage,
     hasNextPage,
@@ -36,6 +48,9 @@ export const useProvidersPage = () => {
 
   const { filteredGames } = useFilteredGames({ allItems, searchedItems });
 
+  /**
+   * Scroll reference for vendor sections (if needed)
+   */
   const scrollRefs = useRef<Record<string, React.RefObject<HTMLDivElement>>>(
     {}
   );
@@ -45,21 +60,30 @@ export const useProvidersPage = () => {
   };
 
   return {
-    localQuery,
+    // Search State
+    localQuery, // Local debounced input
     setLocalQuery,
     isSearching: !!searchQuery,
     searchedItems,
+
+    // Pagination & Scroll
     hasNextPage,
     isFetchingNextPage,
-    ref,
+    ref, // IntersectionObserver ref
     scrollRefs,
-    handleClick,
+
+    // Data & State
     allItems,
+    filteredGames, // Final filtered games list
+    isLoading,
+
+    // Filters
     vendor,
     sort,
     setSort,
-    isLoading,
-    filteredGames,
+
+    // Vendor handler
+    handleClick,
   };
 };
 

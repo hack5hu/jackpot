@@ -9,6 +9,8 @@ import Link from "next/link";
 
 export default function Header() {
   const { setCategory, setSort, setSearchQuery } = gameStates();
+
+  // Clears search, sort, and category filters
   const clearFn = () => {
     setCategory?.("");
     setSort?.(null);

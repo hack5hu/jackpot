@@ -7,6 +7,7 @@ import { gameStates } from "@/store/gameStates";
 const GameCard = ({ game }: GameCardProps) => {
   const { favoriteGame = [], setFavoriteGame } = gameStates();
 
+  // Check if game is already marked as favorite
   const isFavorite = favoriteGame.some((fav) => fav.slug === game.slug);
 
   const toggleFavorite = () => {

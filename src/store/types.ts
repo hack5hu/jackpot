@@ -9,7 +9,6 @@ export interface FilterState {
   vendor?: Vendor | null;
   setVendor?: (vendor: Vendor | null) => void;
   setSearchQuery: (query: string) => void;
-  setFilters: (filters: Partial<FilterState>) => void;
   sort?: Option | null;
   setSort?: (sort: Option | null) => void;
   favoriteGame: Game[];

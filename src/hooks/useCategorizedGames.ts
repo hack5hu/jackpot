@@ -3,6 +3,15 @@ import { categorizeGamesByCategory } from "@/helper/categorizeGamesByCategory";
 import { gameStates } from "@/store/gameStates";
 import { Game } from "@/types/GameType";
 
+/**
+ * Hook to handle game categorization and filtering logic
+ *
+ * @param allItems - The complete list of games fetched from the API
+ * @returns An object containing:
+ *  - categorizedGames: all games grouped by category
+ *  - cachedCategoryItems: items of the currently selected category (if searchQuery is not active)
+ *  - mergedItems: unique combination of filtered and original list
+ */
 export const useCategorizedGames = (allItems: Game[]) => {
   const { category, searchQuery } = gameStates();
 

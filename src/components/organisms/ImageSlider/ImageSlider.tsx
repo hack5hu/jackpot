@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import CustomImage from "@/components/atoms/CustomImage/CustomImage";
 import styles from "./ImageSlider.module.scss";
 
+// Dynamically imports 8 images from the cards directory
 const images = Array.from({ length: 7 }, (_, i) =>
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   require(`@/assets/cards/image${i + 1}.png`)
@@ -11,12 +12,13 @@ const ImageSlider = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Auto-scroll logic: scrolls every 3 seconds
     const interval = setInterval(() => {
       if (sliderRef.current) {
         const container = sliderRef.current;
         const scrollAmount = container.clientWidth / 3;
         const maxScrollLeft = container.scrollWidth - container.clientWidth;
-
+        // If scrolled to end, reset to start
         if (Math.ceil(container.scrollLeft) >= maxScrollLeft) {
           container.scrollTo({ left: 0, behavior: "smooth" });
         } else {

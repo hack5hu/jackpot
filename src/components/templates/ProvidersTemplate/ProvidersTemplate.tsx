@@ -14,19 +14,28 @@ import { engLang } from "@/baseLocalization/baseLocalization";
 
 export default function ProviderTemplate() {
   const {
+    // Search State
     localQuery,
     setLocalQuery,
     isSearching,
+
+    // Pagination & Scroll
     hasNextPage,
     isFetchingNextPage,
     ref,
-    handleClick,
+    scrollRefs,
+
+    // Data & State
+    filteredGames,
+    isLoading,
+
+    // Filters
     vendor,
     sort,
     setSort,
-    isLoading,
-    scrollRefs,
-    filteredGames,
+
+    // Vendor handler
+    handleClick,
   } = useProvidersPage();
 
   return (

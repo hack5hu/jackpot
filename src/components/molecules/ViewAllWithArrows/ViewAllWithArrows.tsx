@@ -12,15 +12,15 @@ const ViewAllControl: React.FC<ViewAllControlProps> = ({
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
+  // Update scroll state: enables/disables arrows based on scroll position
   const updateScrollState = () => {
     const el = scrollRef.current;
     if (!el) return;
     setCanScrollLeft(el.scrollLeft > 0);
-    setCanScrollRight(
-      el.scrollLeft + el.clientWidth < el.scrollWidth - 1 
-    );
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
   };
 
+  // Scroll handler: scrolls by container width in either direction
   const scroll = (direction: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
@@ -35,6 +35,7 @@ const ViewAllControl: React.FC<ViewAllControlProps> = ({
     const el = scrollRef.current;
     if (!el) return;
 
+    // Add scroll and resize listeners
     updateScrollState();
     el.addEventListener("scroll", updateScrollState);
     window.addEventListener("resize", updateScrollState);
@@ -82,5 +83,4 @@ const ViewAllControl: React.FC<ViewAllControlProps> = ({
 };
 
 export default ViewAllControl;
-
 

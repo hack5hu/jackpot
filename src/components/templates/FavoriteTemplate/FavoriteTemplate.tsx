@@ -11,13 +11,20 @@ import Link from "next/link";
 
 export default function FavoriteTemplate() {
   const {
+    // Search State
     localQuery,
     setLocalQuery,
+
+    // Sorting State
     sort,
     setSort,
+
+    // Filtered & Visible Games
     visibleGames,
     isFetchingMore,
     hasMore,
+
+    // Infinite Scroll Trigger
     observerRef,
   } = useFavoritePage();
 
@@ -62,3 +69,4 @@ export default function FavoriteTemplate() {
     </div>
   );
 }
+

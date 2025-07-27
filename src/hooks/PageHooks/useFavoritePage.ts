@@ -3,6 +3,13 @@ import { gameStates } from "@/store/gameStates";
 import { useDebouncedSearchQuery } from "@/hooks/useDebouncedSearchQuery";
 import { Option } from "@/store/types";
 
+/**
+ * useFavoritePage
+ * Hook to manage logic for the Favorite screen including:
+ * - Search
+ * - Sort (ascending/descending)
+ * - Infinite scroll loading (20 at a time)
+ */
 export const useFavoritePage = () => {
   const { searchQuery, favoriteGame = [] } = gameStates();
   const { localQuery, setLocalQuery } = useDebouncedSearchQuery();
@@ -12,6 +19,9 @@ export const useFavoritePage = () => {
 
   const observerRef = useRef<HTMLDivElement | null>(null);
 
+  /**
+   * Filter & sort favorites based on searchQuery and selected sort option
+   */
   const filteredFavorites = useMemo(() => {
     let games = [...favoriteGame];
     const trimValue = searchQuery?.trim();
@@ -32,6 +42,9 @@ export const useFavoritePage = () => {
 
   const visibleGames = filteredFavorites.slice(0, visibleCount);
 
+  /**
+   * Load more games by increasing visible count (simulates pagination)
+   */
   const fetchMore = () => {
     if (visibleCount < filteredFavorites.length) {
       setIsFetchingMore(true);
@@ -43,7 +56,9 @@ export const useFavoritePage = () => {
   };
 
   const hasMore = visibleCount < filteredFavorites.length;
-
+  /**
+   * IntersectionObserver to auto-trigger fetchMore when bottom is reached
+   */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -64,15 +79,22 @@ export const useFavoritePage = () => {
   }, [hasMore, isFetchingMore, fetchMore]);
 
   return {
+    // Search State
     localQuery,
     setLocalQuery,
+    searchQuery,
+
+    // Sorting State
     sort,
     setSort,
-    searchQuery,
+
+    // Filtered & Visible Games
     visibleGames,
     isFetchingMore,
     fetchMore,
     hasMore,
+
+    // Infinite Scroll Trigger
     observerRef,
   };
 };

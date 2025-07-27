@@ -2,6 +2,10 @@ import { IMAGES } from "@/assets/image/image";
 import { engLang } from "@/baseLocalization/baseLocalization";
 import type { StaticImageData } from "next/image";
 
+/**
+ * CATEGORY_META defines metadata for each supported game category.
+ * Includes title (localized) and associated icon/image.
+ */
 export const CATEGORY_META: Record<
   string,
   { title: string; image: string | StaticImageData }
@@ -28,6 +32,12 @@ export const CATEGORY_META: Record<
   },
 };
 
+/**
+ * GAME_PROVIDERS lists all supported vendors/providers along with:
+ * - Localized name
+ * - Provider logo (URL-based)
+ * - Unique identifier (id used in API queries and filtering)
+ */
 export const GAME_PROVIDERS = [
   {
     name: engLang.pragmaticPlay,
@@ -73,14 +83,16 @@ export const GAME_PROVIDERS = [
   },
 ];
 
+/**
+ * OPTIONS defines the sort options for games.
+ * Each item contains:
+ * - `id`: Sort key used in API (asc or desc)
+ * - `name`: Localized label for UI
+ */
 export const OPTIONS = [
   { id: "asc", name: engLang.asc },
   { id: "desc", name: engLang.desc },
 ];
 
-export const LIMIT_API = 100;
-
-
-
-
+export const LIMIT_API = 50;
 
