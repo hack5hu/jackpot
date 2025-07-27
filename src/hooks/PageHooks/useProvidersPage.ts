@@ -1,14 +1,14 @@
 import { useRef } from "react";
 import { useCasinoGames } from "@/hooks/queries/useCasinoGames";
 import { useSearchGames } from "@/hooks/queries/useSearchGames";
-import { useGameFilters } from "@/store/useGameFilters";
+import { gameStates } from "@/store/gameStates";
 import { useDebouncedSearchQuery } from "@/hooks/useDebouncedSearchQuery";
 import { useInfiniteScrollTrigger } from "@/hooks/useInfiniteScrollTrigger";
 import { useFilteredGames } from "@/hooks/useFilteredGames";
 import { Vendor } from "@/store/types";
 
 export const useProvidersPage = () => {
-  const { vendor, setVendor, sort, setSort, searchQuery } = useGameFilters();
+  const { vendor, setVendor, sort, setSort, searchQuery } = gameStates();
 
   const { localQuery, setLocalQuery } = useDebouncedSearchQuery();
 
@@ -62,6 +62,4 @@ export const useProvidersPage = () => {
     filteredGames,
   };
 };
-
-
 

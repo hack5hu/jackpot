@@ -19,7 +19,14 @@ export const engLang = {
   viewAll: "View All",
   pickOption: "Pick option",
   sortBy: "Sort by:",
+  emptyList: "No favorites yet! Start picking your favorite games.",
+  favorite: "Favorite",
+  discoverGames: "Explore Now",
 };
+
+
+
+
 
 
 

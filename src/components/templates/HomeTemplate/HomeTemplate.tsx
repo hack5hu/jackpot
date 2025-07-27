@@ -9,6 +9,7 @@ import Loader from "@/components/atoms/Loader/Loader";
 import { Game } from "@/types/GameType";
 import { useHomePage } from "@/hooks/PageHooks/useHomePage";
 import { engLang } from "@/baseLocalization/baseLocalization";
+import CustomDropdown from "@/components/atoms/CustomDropdown/CustomDropdown";
 
 const HomePageTemplate = () => {
   const {
@@ -29,6 +30,8 @@ const HomePageTemplate = () => {
     scrollProviderRefs,
     handleClick,
     isLoading,
+    sort,
+    setSort
   }= useHomePage()
   const {}= useHomePage()
   const displayGames = isSearching
@@ -41,21 +44,25 @@ const HomePageTemplate = () => {
   const remainingCategories = categoryEntries.slice(2);
   return (
     <div className={styles.wrapper}>
-      <SearchInput
-        value={localQuery}
-        onChange={(e) => setLocalQuery(e.target.value)}
-        placeholder={engLang.searchGame}
-        type="text"
-        hint={
-          localQuery.length > 0 && localQuery.length < 3
-            ? engLang.hintWarning
-            : undefined
-        }
-      />
+      <div className={styles.searchAndFilterWrapper}>
+        <SearchInput
+          value={localQuery}
+          onChange={(e) => setLocalQuery(e.target.value)}
+          placeholder={engLang.searchGame}
+          type="text"
+          hint={
+            localQuery.length > 0 && localQuery.length < 3
+              ? engLang.hintWarning
+              : undefined
+          }
+        />
+       {selectedCategory && <CustomDropdown selectedItem={sort} setSelectedItem={setSort!} />}
+      </div>
 
       <CategoryTabBar
         activeCategory={selectedCategory ?? null}
         onCategoryChange={setSelectedCategory}
+        isFavorite
       />
 
       {isSearching || selectedCategory ? (
@@ -108,6 +115,8 @@ const HomePageTemplate = () => {
 };
 
 export default HomePageTemplate;
+
+
 
 
 

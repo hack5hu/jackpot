@@ -7,12 +7,14 @@ export default function IconWithText({
   alt = "",
   text,
   iconPosition = "left",
+  setCategory
 }: Props) {
   return (
     <div
       className={`${styles.container} ${
         iconPosition === "right" ? styles.reverse : ""
       }`}
+      onClick={setCategory}
     >
       <Image
         src={iconSrc}
@@ -25,4 +27,5 @@ export default function IconWithText({
     </div>
   );
 }
+
 

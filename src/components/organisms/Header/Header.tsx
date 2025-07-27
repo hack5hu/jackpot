@@ -4,17 +4,15 @@ import styles from "./Header.module.scss";
 import Image from "next/image";
 import { IMAGES } from "@/assets/image/image";
 import Button from "@/components/atoms/Button/Button";
-import { useGameFilters } from "@/store/useGameFilters";
+import { gameStates } from "@/store/gameStates";
 import Link from "next/link";
 
 export default function Header() {
-
-  const { setCategory, setSort, setSearchQuery } = useGameFilters();
+  const { setCategory, setSort, setSearchQuery } = gameStates();
   const clearFn = () => {
     setCategory?.("");
     setSort?.(null);
-    setSearchQuery?.('')
-
+    setSearchQuery?.("");
   };
   return (
     <header className={styles.header} onClick={() => clearFn()}>
@@ -61,8 +59,4 @@ export default function Header() {
     </header>
   );
 }
-
-
-
-
 

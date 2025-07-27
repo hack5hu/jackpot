@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchSearchGames } from "@/services/casino";
-import { useGameFilters } from "@/store/useGameFilters";
+import { gameStates } from "@/store/gameStates";
 
 export const useSearchGames = () => {
-  const { searchQuery } = useGameFilters();
+  const { searchQuery } = gameStates();
 
   return useQuery({
     queryKey: ["search-games", searchQuery],

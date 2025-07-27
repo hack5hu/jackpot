@@ -12,6 +12,7 @@ export function categorizeGamesByCategory(games: Game[]) {
         }
         categoryMap[category].push(game);
       }
+      
     });
   });
 

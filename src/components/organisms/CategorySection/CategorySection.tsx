@@ -49,7 +49,12 @@ const CategorySection = ({
   return (
     <div className={styles.section}>
       <div className={styles.header}>
-        <IconWithText iconSrc={meta.image} alt={meta.title} text={meta.title} />
+        <IconWithText
+          iconSrc={meta.image}
+          alt={meta.title}
+          text={meta.title}
+          setCategory={() => setSelectedCategory(category)}
+        />
         <ViewAllControl
           scrollRef={scrollRefs}
           setCategory={() => setSelectedCategory(category)}
@@ -88,6 +93,7 @@ const CategorySection = ({
 };
 
 export default CategorySection;
+
 
 
 

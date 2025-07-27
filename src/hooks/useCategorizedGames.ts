@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { categorizeGamesByCategory } from "@/helper/categorizeGamesByCategory";
-import { useGameFilters } from "@/store/useGameFilters";
+import { gameStates } from "@/store/gameStates";
 import { Game } from "@/types/GameType";
 
 export const useCategorizedGames = (allItems: Game[]) => {
-  const { category, searchQuery } = useGameFilters();
+  const { category, searchQuery } = gameStates();
 
   const categorizedGames = useMemo(
     () => categorizeGamesByCategory(allItems),

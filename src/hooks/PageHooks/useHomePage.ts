@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useGameFilters } from "@/store/useGameFilters";
+import { gameStates } from "@/store/gameStates";
 import { useCasinoGames } from "@/hooks/queries/useCasinoGames";
 import { useDebouncedSearchQuery } from "@/hooks/useDebouncedSearchQuery";
 import { useInfiniteScrollTrigger } from "@/hooks/useInfiniteScrollTrigger";
@@ -10,7 +10,7 @@ import { Vendor } from "@/store/types";
 
 export const useHomePage = () => {
   const { category, setCategory, vendor, setVendor, sort, setSort } =
-    useGameFilters();
+    gameStates();
 
   const { localQuery, setLocalQuery } = useDebouncedSearchQuery();
 
@@ -20,7 +20,7 @@ export const useHomePage = () => {
     hasNextPage,
     isFetchingNextPage,
     isLoading,
-  } = useCasinoGames({ category: category ?? "" });
+  } = useCasinoGames({ category: category ?? "", order: sort?.id ?? "" });
 
   const allItems = gameData?.pages.flatMap((p) => p.data.items) || [];
   const { categorizedGames, mergedItems } = useCategorizedGames(allItems);

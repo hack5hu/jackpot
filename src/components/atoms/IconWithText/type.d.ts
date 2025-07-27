@@ -3,5 +3,7 @@ export type Props = {
   alt?: string;
   text: string;
   iconPosition?: "left" | "right";
+  setCategory?: () => void;
 };
+
 

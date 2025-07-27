@@ -1,9 +1,9 @@
 import { useEffect, useCallback, useState } from "react";
 import { debounce } from "@/utils/debounce";
-import { useGameFilters } from "@/store/useGameFilters";
+import { gameStates } from "@/store/gameStates";
 
 export const useDebouncedSearchQuery = () => {
-  const { searchQuery, setSearchQuery, setCategory } = useGameFilters();
+  const { searchQuery, setSearchQuery, setCategory } = gameStates();
   const [localQuery, setLocalQuery] = useState(searchQuery || "");
 
   const debouncedSetSearchQuery = useCallback(
@@ -24,3 +24,4 @@ export const useDebouncedSearchQuery = () => {
 
   return { localQuery, setLocalQuery };
 };
+

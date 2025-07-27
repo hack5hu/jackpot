@@ -1,11 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useSearchGames } from "@/hooks/queries/useSearchGames";
-import { useGameFilters } from "@/store/useGameFilters";
+import { gameStates } from "@/store/gameStates";
 import { Game } from "@/types/GameType";
 
-
 export const useLastValidSearchItems = () => {
-  const { searchQuery } = useGameFilters();
+  const { searchQuery } = gameStates();
   const { data, isSuccess } = useSearchGames();
 
   const lastValidSearchItems = useRef<Game[]>([]);
@@ -21,5 +20,4 @@ export const useLastValidSearchItems = () => {
     lastValidSearchItems,
   };
 };
-
 

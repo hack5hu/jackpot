@@ -1,11 +1,6 @@
-'use client';
-
-// import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./lib/react-query";
-import Header from "@/components/organisms/Header/Header";
+import { Geist, Geist_Mono } from "next/font/google";
+import ClientLayout from "./ClientLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,29 +12,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata = {
+  title: "Play Original Games | Jackpot",
+  description: "Play Original Games",
+};
+
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable}`}
         style={{ backgroundColor: "#25222D" }}
       >
-        <QueryClientProvider client={queryClient} >
-          <Header />
-          {children}
-        </QueryClientProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
 }
-
-
-
-
-
-
 

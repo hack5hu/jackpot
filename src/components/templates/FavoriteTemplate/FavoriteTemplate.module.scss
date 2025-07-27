@@ -1,0 +1,59 @@
+@use "@/globalStyles/variables.scss" as *;
+@use "@/globalStyles/colors.scss" as *;
+
+.searchAndFilterWrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(171px, 1fr));
+  gap: 0.25rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+  }
+}
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.emptyList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 60vh; 
+  font-size: 1.2rem;
+  color: $text-default; 
+   opacity: 0;
+  animation: fadeIn 0.3s ease-in forwards;
+  width: 100%;
+  flex-direction: column;
+  
+  span{
+     margin-bottom: 1.25rem; 
+  }
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+}
