@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { FilterState } from "./types";
-import { createGameFilterSlice } from "./actions";
+import { FilterState } from "@/store/types";
+import { createGameFilterSlice } from "@/store/actions";
 
 export const useGameFilters = create<FilterState>()(
   persist(createGameFilterSlice, {
@@ -13,3 +13,4 @@ export const useGameFilters = create<FilterState>()(
     }),
   })
 );
+

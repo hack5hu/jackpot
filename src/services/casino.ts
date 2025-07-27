@@ -1,4 +1,4 @@
-import api from "./api";
+import api from "@/services/api";
 import { LIMIT_API } from "@/constants/constants";
 import { UseCasinoGamesParams, CasinoGamesResponse } from "@/types/casino";
 
@@ -40,4 +40,5 @@ export const fetchSearchGames = async (
 
   return response.data;
 };
+
 

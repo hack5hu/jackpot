@@ -1,26 +1,26 @@
+import React from "react";
 import { IMAGES } from "@/assets/image/image";
 import IconWithText from "@/components/atoms/IconWithText/IconWithText";
 import ProviderSection from "@/components/molecules/ProviderSection/ProviderSection";
 import SearchInput from "@/components/molecules/SearchInput/SearchInput";
 import { GAME_PROVIDERS } from "@/constants/constants";
-import React, { useEffect, useMemo, useRef } from "react";
-import styles from "./ProviderPage.module.scss";
+import styles from "@/components/templates/ProvidersTemplate/ProvidersTemplate.module.scss";
 import CustomDropdown from "@/components/atoms/CustomDropdown/CustomDropdown";
 import GameCard from "@/components/molecules/GameCard/GameCard";
 import Loader from "@/components/atoms/Loader/Loader";
-import { useProvidersPage } from "./useProviderPage";
+import { useProvidersPage } from "@/hooks/PageHooks/useProvidersPage";
+import { Game } from "@/types/GameType";
+import { engLang } from "@/baseLocalization/baseLocalization";
 
-export default function ProviderPage() {
+export default function ProviderTemplate() {
   const {
     localQuery,
     setLocalQuery,
     isSearching,
-    searchedItems,
     hasNextPage,
     isFetchingNextPage,
     ref,
     handleClick,
-    allItems,
     vendor,
     sort,
     setSort,
@@ -28,8 +28,7 @@ export default function ProviderPage() {
     scrollRefs,
     filteredGames,
   } = useProvidersPage();
-  
-  
+
   return (
     <div>
       <ProviderSection
@@ -40,25 +39,25 @@ export default function ProviderPage() {
       />
       <div className={styles.searchWrapper}>
         <div style={{ marginTop: 10 }}>
-          <IconWithText iconSrc={IMAGES.PROVIDERS} text={vendor?.name} />
+          <IconWithText iconSrc={IMAGES.PROVIDERS} text={vendor?.name ?? ""} />
         </div>
         <div className={styles.searchAndFilterWrapper}>
           <SearchInput
             value={localQuery}
             onChange={(e) => setLocalQuery(e.target.value)}
-            placeholder="Search a game..."
+            placeholder={engLang.searchGame}
             type="text"
             hint={
               localQuery.length > 0 && localQuery.length < 3
-                ? "Enter 3 or more characters"
+                ? engLang.hintWarning
                 : undefined
             }
           />
-          <CustomDropdown selectedItem={sort} setSelectedItem={setSort} />
+          <CustomDropdown selectedItem={sort} setSelectedItem={setSort!} />
         </div>
       </div>
       <div className={styles.grid}>
-        {filteredGames.map((game) => (
+        {filteredGames.map((game: Game) => (
           <GameCard key={game.slug} game={game} />
         ))}
         {!isSearching && hasNextPage && <div ref={ref} />}
@@ -71,16 +70,4 @@ export default function ProviderPage() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

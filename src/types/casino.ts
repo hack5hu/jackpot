@@ -1,11 +1,4 @@
-export type Game = {
-  id: string;
-  name: string;
-  slug: string;
-  category: string;
-  vendor: string;
-  // Add other fields as needed
-};
+import { Game } from "@/types/GameType";
 
 export type CasinoGamesResponse = {
   data: {
@@ -19,3 +12,4 @@ export type UseCasinoGamesParams = {
   order?: string;
   vendor?: string;
 };
+

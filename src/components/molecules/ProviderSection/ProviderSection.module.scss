@@ -1,19 +1,19 @@
-@import '@/globalStyles/variables.scss';
-@import '@/globalStyles/colors.scss';
+@use "@/globalStyles/variables.scss" as *;
+@use "@/globalStyles/colors.scss" as *;
 
 .wrapper {
- margin-top: 5px;
+  margin-top: 5px;
   @media (max-width: $breakpoint-mobile) {
-   margin-top: -5px;
+    margin-top: -5px;
   }
   @media (max-width: $breakpoint-tablet) {
-   margin-top: -5px;
+    margin-top: -5px;
   }
 }
 
 .heading {
   font-size: 1.5rem;
-  color: white;
+  color: $white-lilac;
 }
 
 .scrollRow {
@@ -39,11 +39,12 @@
   scroll-snap-align: start;
   transition: transform 0.5s ease;
   border-radius: 8px;
-  position: relative; 
+  position: relative;
 
-   &:hover {
-    transform: translateY(-4px) scale(1.00);
-    cursor: pointer;}
+  &:hover {
+    transform: translateY(-4px) scale(1);
+    cursor: pointer;
+  }
 }
 
 .logo {
@@ -56,7 +57,7 @@
 .name {
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: white;
+  color: white-lilac;
 }
 .iconWrapper {
   flex-direction: row;
@@ -65,12 +66,12 @@
   gap: 0.5rem;
   margin-bottom: 10px;
 }
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.logoTextWrapper{
+.logoTextWrapper {
   width: 20px;
   height: 20px;
   display: flex;
@@ -79,7 +80,7 @@
   border-radius: 50%;
   background-color: $icon-orange;
   margin-right: 0.5rem;
-  top:-7px;
+  top: -7px;
   z-index: 20;
   right: -7px;
   position: absolute;

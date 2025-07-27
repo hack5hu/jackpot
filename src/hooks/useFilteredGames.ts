@@ -1,17 +1,15 @@
-import { Game } from "@/types/GameType";
 import { useMemo } from "react";
+import { useFilteredGameProps } from "@/hooks/type/type";
 
 export const useFilteredGames = ({
   allItems,
   searchedItems,
-}: {
-  allItems: Game[];
-  searchedItems: Game[];
-}) => {
+}: useFilteredGameProps) => {
   const filteredGames = useMemo(() => {
     return searchedItems?.length > 0 ? searchedItems : allItems;
   }, [searchedItems, allItems]);
 
   return { filteredGames };
 };
+
 

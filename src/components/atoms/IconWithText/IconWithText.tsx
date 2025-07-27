@@ -1,13 +1,6 @@
 import Image from "next/image";
 import styles from "./IconWithText.module.scss";
-import type { StaticImageData } from "next/image";
-
-type Props = {
-  iconSrc: string | StaticImageData;
-  alt?: string;
-  text: string;
-  iconPosition?: "left" | "right";
-};
+import { Props } from "./type";
 
 export default function IconWithText({
   iconSrc,

@@ -1,20 +1,13 @@
 import React from "react";
 import styles from "./SearchInput.module.scss";
 import SearchIcon from "@/assets/icons/SearchIcon";
-// import InfoIcon from "@/assets/icons/InfoIcon"; // Add this or use a placeholder
-
-type SearchInputProps = {
-  value: string;
-  placeholder?: string;
-  hint?: string; // NEW
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+import { SearchInputProps } from "./type";
 
 const SearchInput: React.FC<SearchInputProps> = ({
   value,
   placeholder,
   onChange,
-  hint  ,
+  hint,
   ...rest
 }) => {
   return (
@@ -33,7 +26,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
       {hint && (
         <div className={styles.hint}>
-          {/* <InfoIcon /> */}
           {hint}
         </div>
       )}
@@ -42,5 +34,4 @@ const SearchInput: React.FC<SearchInputProps> = ({
 };
 
 export default SearchInput;
-
 

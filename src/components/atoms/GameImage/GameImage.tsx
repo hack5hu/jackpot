@@ -1,13 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import styles from "./GameImage.module.scss";
-
-type GameImageProps = {
-  src: string;
-  alt: string;
-  borderColor: string;
-  blurDataURL?: string;
-};
+import styles from "@/components/atoms/GameImage/GameImage.module.scss";
 
 const GameImage: React.FC<GameImageProps> = ({
   src,
@@ -31,7 +24,6 @@ const GameImage: React.FC<GameImageProps> = ({
 };
 
 export default GameImage;
-
 
 
 

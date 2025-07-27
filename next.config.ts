@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/proxy/:path*",
-        destination: "https://jpapi-staging.jackpot.bet/:path*",
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
       },
     ];
   },
@@ -15,5 +15,6 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
 
 

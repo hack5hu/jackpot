@@ -1,13 +1,9 @@
 import React from "react";
-import styles from "./ArrowButton.module.scss";
+import styles from "@/components/atoms/ArrowButton/ArrowButton.module.scss";
 import ArrowLeftIcon from "@/assets/icons/ArrowLeftIcon";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
+import { ArrowButtonProps } from "@/components/atoms/ArrowButton/type";
 
-type ArrowButtonProps = {
-  direction: "left" | "right";
-  onClick: () => void;
-  className?: string;
-};
 
 const ArrowButton: React.FC<ArrowButtonProps> = ({
   direction,
@@ -27,3 +23,5 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
 };
 
 export default ArrowButton;
+
+

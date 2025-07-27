@@ -1,13 +1,12 @@
-@import '@/globalStyles/colors.scss';
-@import '@/globalStyles/variables.scss';
+@import "@/globalStyles/colors.scss";
+@import "@/globalStyles/variables.scss";
 
 .dropdown {
   position: relative;
   width: 100%;
-  max-width: 150px; // default max width
+  max-width: 150px; 
   margin-top: 5px;
   animation: fadeIn 0.2s ease;
-
 
   @keyframes fadeIn {
     from {
@@ -33,7 +32,7 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: $bg-secondary;
   border: 2px solid $border-secondary;
 
@@ -46,7 +45,7 @@
     padding: 0.5rem;
   }
 
-  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop - 1) {
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
     font-size: 15px;
   }
 
@@ -91,7 +90,7 @@
     font-size: 14px;
   }
 
-  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop ) {
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
     font-size: 15px;
   }
 

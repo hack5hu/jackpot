@@ -1,14 +1,11 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import api from "@/services/api";
 import { useGameFilters } from "@/store/useGameFilters";
+import { UseCasinoGamesProps } from "@/hooks/type/type";
 
 const LIMIT = 100;
 
-type UseCasinoGamesProps = {
-  category?: string;
-  order?: string;
-  vendor?: string;
-};
+
 
 export const useCasinoGames = ({
   category,
@@ -62,4 +59,5 @@ export const useSearchGames = () => {
     staleTime: 5 * 60 * 1000, // Optional: avoid refetching repeatedly
   });
 };
+
 

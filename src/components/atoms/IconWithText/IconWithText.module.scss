@@ -1,4 +1,5 @@
-@import '@/globalStyles/colors';
+@use "@/globalStyles/variables.scss" as *;
+@use "@/globalStyles/colors.scss" as *;
 
 $breakpoint-mobile: 480px;
 $breakpoint-tablet: 768px;
@@ -26,27 +27,25 @@ $breakpoint-desktop: 1024px;
   font-family: Poppins, sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 1.25rem; // ~20px
+  font-size: 1.25rem;
   line-height: 31.6px;
   letter-spacing: 0.8px;
   color: $white;
 
-
   @media (max-width: $breakpoint-mobile) {
-    font-size: 1rem; // 16px
+    font-size: 1rem;
     line-height: 24px;
     letter-spacing: 0.5px;
   }
 
-
   @media (max-width: $breakpoint-mobile) {
-    font-size: 1rem; // 16px
+    font-size: 1rem;
     line-height: 24px;
     letter-spacing: 0.5px;
   }
 
   @media (min-width: $breakpoint-desktop) {
-    font-size: 1.5rem; // 24px
+    font-size: 1.5rem;
     line-height: 34px;
   }
 }
@@ -63,3 +62,4 @@ $breakpoint-desktop: 1024px;
     margin-right: 10px;
   }
 }
+

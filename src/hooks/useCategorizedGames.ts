@@ -1,8 +1,9 @@
 import { useMemo } from "react";
 import { categorizeGamesByCategory } from "@/helper/categorizeGamesByCategory";
 import { useGameFilters } from "@/store/useGameFilters";
+import { Game } from "@/types/GameType";
 
-export const useCategorizedGames = (allItems: any[]) => {
+export const useCategorizedGames = (allItems: Game[]) => {
   const { category, searchQuery } = useGameFilters();
 
   const categorizedGames = useMemo(
@@ -29,3 +30,4 @@ export const useCategorizedGames = (allItems: any[]) => {
     mergedItems,
   };
 };
+

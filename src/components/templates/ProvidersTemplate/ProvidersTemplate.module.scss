@@ -1,4 +1,4 @@
-@import '@/globalStyles/variables.scss';
+@import "@/globalStyles/variables.scss";
 
 .searchWrapper {
   display: flex;
@@ -11,7 +11,7 @@
 
   @media (max-width: $breakpoint-mobile) {
     flex-direction: column;
-    align-items: stretch; // full width of parent
+    align-items: stretch; 
   }
 }
 

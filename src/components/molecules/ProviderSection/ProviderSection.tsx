@@ -6,21 +6,14 @@ import { IMAGES } from "@/assets/image/image";
 import ViewAllControl from "../ViewAllWithArrows/ViewAllWithArrows";
 import Link from "next/link";
 import CheckIcon from "@/assets/icons/CheckIcon";
-
-type Provider = { name: string; image: string; id: string };
-type Props = {
-  providers: Provider[];
-  scrollRefs: React.RefObject<HTMLDivElement>;
-  handleClick: (provider: Provider) => void;
-  selectedProvider?: Provider;
-};
+import { ProviderSectionProps } from "./type";
 
 const ProviderSection = ({
   providers,
   scrollRefs,
   handleClick,
   selectedProvider,
-}: Props) => {
+}: ProviderSectionProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -56,8 +49,4 @@ const ProviderSection = ({
 };
 
 export default ProviderSection;
-
-
-
-
 

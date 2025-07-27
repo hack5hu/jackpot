@@ -8,10 +8,13 @@ import { useGameFilters } from "@/store/useGameFilters";
 import Link from "next/link";
 
 export default function Header() {
-  const { setCategory, setSort } = useGameFilters();
+
+  const { setCategory, setSort, setSearchQuery } = useGameFilters();
   const clearFn = () => {
     setCategory?.("");
-    setSort?.("");
+    setSort?.(null);
+    setSearchQuery?.('')
+
   };
   return (
     <header className={styles.header} onClick={() => clearFn()}>
@@ -58,5 +61,8 @@ export default function Header() {
     </header>
   );
 }
+
+
+
 
 

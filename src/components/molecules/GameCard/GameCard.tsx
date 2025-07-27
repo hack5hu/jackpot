@@ -1,7 +1,8 @@
 import styles from "./GameCard.module.scss";
 import GameImage from "@/components/atoms/GameImage/GameImage";
+import { GameCardProps } from "./type";
 
-const GameCard = ({ game }) => (
+const GameCard = ({ game }: GameCardProps) => (
   <div className={styles.card}>
     <div className={styles.imageWrapper}>
       <GameImage

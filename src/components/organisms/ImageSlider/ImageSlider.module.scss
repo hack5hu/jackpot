@@ -1,0 +1,28 @@
+@use "@/globalStyles/variables.scss" as *;
+@use "@/globalStyles/colors.scss" as *;
+
+.sliderWrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 0.5rem;
+  padding: 0.5rem 0rem;
+  margin-top: 10px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 0.25rem;
+  }
+}
+
+.imageContainer {
+  flex: 0 0 calc(100% / 3);
+  max-width: calc(100% / 3);
+  border-radius: 6px;
+  @media (max-width: $breakpoint-mobile) {
+    flex: 0 0 80%;
+    max-width: 75%;
+  }
+}

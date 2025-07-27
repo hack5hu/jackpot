@@ -1,4 +1,5 @@
 import { IMAGES } from "@/assets/image/image";
+import { engLang } from "@/baseLocalization/baseLocalization";
 import type { StaticImageData } from "next/image";
 
 export const CATEGORY_META: Record<
@@ -6,72 +7,66 @@ export const CATEGORY_META: Record<
   { title: string; image: string | StaticImageData }
 > = {
   ORIGINAL: {
-    title: "Jackpot Originals",
+    title: engLang.jackOriginal,
     image: IMAGES.LOGO_ICON,
   },
   VIDEOSLOTS: {
-    title: "Slots",
+    title: engLang.slots,
     image: IMAGES.SLOT,
   },
   TABLEGAMES: {
-    title: "Table Games",
+    title: engLang.tableGames,
     image: IMAGES.TABLE_GAMES,
   },
   GAMESHOWS: {
-    title: "Game Shows",
+    title: engLang.gameShow,
     image: IMAGES.GAME_SHOW,
   },
   LIVEDEALER: {
-    title: "Live Dealer",
+    title: engLang.liveDealer,
     image: IMAGES.LIVE_DEALER,
   },
 };
 
 export const GAME_PROVIDERS = [
   {
-    name: "Pragmatic Play",
+    name: engLang.pragmaticPlay,
     image:
       "https://cdn.jackpot.bet/images/providers/pragmatic.png?format=auto&width=384&quality=75",
     id: "PragmaticPlay",
   },
   {
-    name: "Jackpot Original",
+    name: engLang.jackOriginal,
     image:
       "https://cdn.jackpot.bet/images/providers/jackpot.png?format=auto&width=384&quality=75",
     id: "JackpotOriginal",
   },
   {
-    name: "BGaming",
+    name: engLang.bGaming,
     image:
       "https://cdn.jackpot.bet/images/providers/bgaming.png?format=auto&width=384&quality=75",
     id: "BGaming",
   },
-  // {
-  //   name: "OneTouch",
-  //   image:
-  //     "https://cdn.jackpot.bet/images/providers/onetouch.png?format=auto&width=384&quality=75",
-  //   id: "OneTouch",
-  // },
   {
-    name: "Hacksaw",
+    name: engLang.hacksaw,
     image:
       "https://cdn.jackpot.bet/images/providers/hacksaw.png?format=auto&width=384&quality=75",
     id: "Hacksaw",
   },
   {
-    name: "Play'n Go",
+    name: engLang.playGo,
     image:
       "https://cdn.jackpot.bet/images/providers/playngo.png?format=auto&width=384&quality=75",
     id: "Play'nGo",
   },
   {
-    name: "Relax Gaming",
+    name: engLang.relaxGaming,
     image:
       "https://cdn.jackpot.bet/images/providers/relax.png?format=auto&width=384&quality=75",
     id: "RelaxGaming",
   },
   {
-    name: "No Limit City",
+    name: engLang.noLimitCity,
     image:
       "https://cdn.jackpot.bet/images/providers/no-limit-city.png?format=auto&width=384&quality=75",
     id: "NolimitCity",
@@ -79,9 +74,13 @@ export const GAME_PROVIDERS = [
 ];
 
 export const OPTIONS = [
-  { id: "asc", name: "A-Z" },
-  { id: "desc", name: "Z-A" },
+  { id: "asc", name: engLang.asc },
+  { id: "desc", name: engLang.desc },
 ];
 
-
 export const LIMIT_API = 100;
+
+
+
+
+

@@ -3,9 +3,6 @@ import styles from "./Loader.module.scss";
 import Image from "next/image";
 import { IMAGES } from "@/assets/image/image"; 
 
-type LoaderProps = {
-  isLoading: boolean;
-};
 
 const Loader = ({ isLoading }: LoaderProps) => {
   return (

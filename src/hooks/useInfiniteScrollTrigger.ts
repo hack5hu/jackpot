@@ -1,15 +1,12 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { useInfiniteScrollTriggerProps } from "@/hooks/type/type";
 
 export const useInfiniteScrollTrigger = ({
   onLoadMore,
   hasNextPage,
   disabled,
-}: {
-  onLoadMore: () => void;
-  hasNextPage: boolean;
-  disabled: boolean;
-}) => {
+}: useInfiniteScrollTriggerProps) => {
   const { ref, inView } = useInView({ threshold: 0.5 });
 
   useEffect(() => {

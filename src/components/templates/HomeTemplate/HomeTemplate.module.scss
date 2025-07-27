@@ -1,8 +1,7 @@
-@import "@/globalStyles/colors.scss";
-@import "@/globalStyles/variables.scss";
+@use "@/globalStyles/variables.scss" as *;
+@use "@/globalStyles/colors.scss" as *;
 
 .wrapper {
-  padding-top: 20px;
   padding-bottom: 20px;
 }
 .grid {

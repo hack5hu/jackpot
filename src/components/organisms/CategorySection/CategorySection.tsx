@@ -5,21 +5,9 @@ import GameCard from "@/components/molecules/GameCard/GameCard";
 import Image from "next/image";
 import CrossArrowIcon from "@/assets/icons/CrossArrowIcon";
 import { IMAGES } from "@/assets/image/image";
-import React, { RefObject } from "react";
-import { Game } from "@/types/GameType";
+import React, { useEffect, useState } from "react";
+import { engLang } from "@/baseLocalization/baseLocalization";
 
-type CategoryMeta = {
-  title: string;
-  image: string;
-};
-
-type CategorySectionProps = {
-  category: string;
-  meta: CategoryMeta;
-  games: Game[];
-  scrollRefs: RefObject<HTMLDivElement | null>;
-  setSelectedCategory: (cat: string) => void;
-};
 const CategorySection = ({
   category,
   meta,
@@ -32,6 +20,32 @@ const CategorySection = ({
   if (!scrollRefs) {
     scrollRefs = React.createRef<HTMLDivElement>();
   }
+  const [showLeft, setShowLeft] = useState(false);
+  const [showRight, setShowRight] = useState(false);
+  useEffect(() => {
+    const container = scrollRefs?.current;
+    if (!container) return;
+
+    let timeout: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      clearTimeout(timeout);
+
+      setShowLeft(false);
+      setShowRight(false);
+
+      timeout = setTimeout(() => {
+        setShowLeft(container.scrollLeft > 0);
+        setShowRight(
+          container.scrollLeft + container.clientWidth < container.scrollWidth
+        );
+      }, 150);
+    };
+
+    handleScroll();
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, [scrollRefs]);
   return (
     <div className={styles.section}>
       <div className={styles.header}>
@@ -41,32 +55,39 @@ const CategorySection = ({
           setCategory={() => setSelectedCategory(category)}
         />
       </div>
-
-      <div className={styles.horizontalScroll} ref={scrollRefs}>
-        {limitedGames.map((game) => (
-          <GameCard key={game.slug} game={game} />
-        ))}
-        {shouldShowViewAll && (
-          <button
-            onClick={() => setSelectedCategory(category)}
-            className={styles.viewAllCard}
-          >
-            <Image
-              src={IMAGES.BG_PIC}
-              alt="View All"
-              fill
-              style={{ objectFit: "cover", borderRadius: "6px" }}
-            />
-            <div className={styles.viewAllTextWrapper}>
-              <CrossArrowIcon />
-              <p className={styles.viewAllText}>View All</p>
-            </div>
-          </button>
-        )}
+      <div
+        className={`${styles.scrollShadowWrapper} ${
+          showLeft ? styles.showLeft : ""
+        } ${showRight ? styles.showRight : ""}`}
+      >
+        <div ref={scrollRefs} className={styles.horizontalScroll}>
+          {limitedGames.map((game) => (
+            <GameCard key={game.slug} game={game} />
+          ))}
+          {shouldShowViewAll && (
+            <button
+              onClick={() => setSelectedCategory(category)}
+              className={styles.viewAllCard}
+            >
+              <Image
+                src={IMAGES.BG_PIC}
+                alt={engLang.viewAll}
+                fill
+                style={{ objectFit: "cover", borderRadius: "6px" }}
+              />
+              <div className={styles.viewAllTextWrapper}>
+                <CrossArrowIcon />
+                <p className={styles.viewAllText}>{engLang.viewAll}</p>
+              </div>
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
 export default CategorySection;
+
+
 

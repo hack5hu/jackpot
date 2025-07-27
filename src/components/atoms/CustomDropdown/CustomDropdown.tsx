@@ -1,18 +1,12 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import styles from "./CustomDropdown.module.scss";
+import styles from "@/components/atoms/CustomDropdown/CustomDropdown.module.scss";
 import { OPTIONS } from "@/constants/constants";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
+import { DropDownProps, Option } from "@/components/atoms/CustomDropdown/type";
+import { engLang } from "@/baseLocalization/baseLocalization";
 
-export type Option = {
-  id: "asc" | "desc";
-  name: string;
-};
 
-type DropDownProps = {
-  selectedItem: Option;
-  setSelectedItem: (option: Option) => void;
-};
 
 export default function CustomDropdown({
   selectedItem,
@@ -49,7 +43,9 @@ export default function CustomDropdown({
   return (
     <div className={styles.dropdown} ref={dropdownRef}>
       <button className={styles.dropdownToggle} onClick={toggleDropdown}>
-        {selectedItem?.id ? `Sort by: ${selectedItem?.name}` : "Pick option"}
+        {selectedItem?.id
+          ? `${engLang.sortBy} ${selectedItem?.name}`
+          : engLang.pickOption}
         <ArrowRightIcon rotate={isOpen ? 270 : 90} />
       </button>
 
@@ -71,6 +67,10 @@ export default function CustomDropdown({
     </div>
   );
 }
+
+
+
+
 
 
 

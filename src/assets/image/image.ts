@@ -10,7 +10,7 @@ import LIVE_DEALER from "./live-dealer.png";
 import LEFT_ARROW from "./left-arrow.png";
 import RIGHT_ARROW from "./right-arrow.png";
 import CROSS_ARROW from "./cross-arrow.png";
-import BG_PIC from "./rank-card-bg.avif"
+import BG_PIC from "./rank-card-bg.png"
 import PROVIDERS from "./Providers.png";
 export const IMAGES = {
   LOGO_ICON,

@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import ArrowLeftIcon from "@/assets/icons/ArrowLeftIcon";
 import ArrowRightIcon from "@/assets/icons/ArrowRightIcon";
 import styles from "./ViewAllWithArrows.module.scss";
+import { engLang } from "@/baseLocalization/baseLocalization";
 
-type Props = {
-  scrollRef: React.RefObject<HTMLDivElement>;
-  setCategory?: () => void;
-  isTextViewAll?: boolean;
-};
-
-const ViewAllControl: React.FC<Props> = ({ scrollRef, setCategory,isTextViewAll=true }) => {
+const ViewAllControl: React.FC<ViewAllControlProps> = ({
+  scrollRef,
+  setCategory,
+  isTextViewAll = true,
+}) => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
@@ -18,7 +17,7 @@ const ViewAllControl: React.FC<Props> = ({ scrollRef, setCategory,isTextViewAll=
     if (!el) return;
     setCanScrollLeft(el.scrollLeft > 0);
     setCanScrollRight(
-      el.scrollLeft + el.clientWidth < el.scrollWidth - 1 // add -1 for floating point "off by 0.5" issue
+      el.scrollLeft + el.clientWidth < el.scrollWidth - 1 
     );
   };
 
@@ -44,15 +43,16 @@ const ViewAllControl: React.FC<Props> = ({ scrollRef, setCategory,isTextViewAll=
       el.removeEventListener("scroll", updateScrollState);
       window.removeEventListener("resize", updateScrollState);
     };
-    // Only re-run when the dom element changes, not every render
     // eslint-disable-next-line
   }, [scrollRef?.current]);
 
   return (
     <div className={styles.viewAllControl}>
-      {isTextViewAll &&  <button className={styles.viewAllText} onClick={setCategory}>
-        View All
-      </button>}
+      {isTextViewAll && (
+        <button className={styles.viewAllText} onClick={setCategory}>
+          {engLang.viewAll}
+        </button>
+      )}
       <div className={styles.arrows}>
         <button
           className={`${styles.arrowButton} ${
@@ -82,10 +82,5 @@ const ViewAllControl: React.FC<Props> = ({ scrollRef, setCategory,isTextViewAll=
 };
 
 export default ViewAllControl;
-
-
-
-
-
 
 

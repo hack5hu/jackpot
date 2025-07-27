@@ -1,32 +1,36 @@
-// components/templates/GameLobbyTemplate.tsx
 import SearchInput from "@/components/molecules/SearchInput/SearchInput";
 import CategoryTabBar from "@/components/molecules/CategoryTabBar/CategoryTabBar";
 import CategorySection from "@/components/organisms/CategorySection/CategorySection";
 import GameCard from "@/components/molecules/GameCard/GameCard";
-import styles from "./HomeTemplate.module.scss";
+import styles from "@/components/templates/HomeTemplate/HomeTemplate.module.scss";
 import ProviderSection from "@/components/molecules/ProviderSection/ProviderSection";
 import { GAME_PROVIDERS } from "@/constants/constants";
 import Loader from "@/components/atoms/Loader/Loader";
+import { Game } from "@/types/GameType";
+import { useHomePage } from "@/hooks/PageHooks/useHomePage";
+import { engLang } from "@/baseLocalization/baseLocalization";
 
-const HomePageTemplate = ({
-  localQuery,
-  setLocalQuery,
-  categorizedGames,
-  selectedCategory,
-  setSelectedCategory,
-  mergedItems,
-  isSearching,
-  searchedItems,
-  lastValidSearchItems,
-  hasNextPage,
-  isFetchingNextPage,
-  ref,
-  scrollRefs,
-  CATEGORY_META,
-  scrollProviderRefs,
-  handleClick,
-  isLoading
-}) => {
+const HomePageTemplate = () => {
+  const {
+    localQuery,
+    setLocalQuery,
+    categorizedGames,
+    selectedCategory,
+    setSelectedCategory,
+    mergedItems,
+    isSearching,
+    searchedItems,
+    lastValidSearchItems,
+    hasNextPage,
+    isFetchingNextPage,
+    ref,
+    scrollRefs,
+    CATEGORY_META,
+    scrollProviderRefs,
+    handleClick,
+    isLoading,
+  }= useHomePage()
+  const {}= useHomePage()
   const displayGames = isSearching
     ? searchedItems.length > 0
       ? searchedItems
@@ -40,23 +44,23 @@ const HomePageTemplate = ({
       <SearchInput
         value={localQuery}
         onChange={(e) => setLocalQuery(e.target.value)}
-        placeholder="Search a game..."
+        placeholder={engLang.searchGame}
         type="text"
         hint={
           localQuery.length > 0 && localQuery.length < 3
-            ? "Enter 3 or more characters"
+            ? engLang.hintWarning
             : undefined
         }
       />
 
       <CategoryTabBar
-        activeCategory={selectedCategory}
+        activeCategory={selectedCategory ?? null}
         onCategoryChange={setSelectedCategory}
       />
 
       {isSearching || selectedCategory ? (
         <div className={styles.grid}>
-          {displayGames?.map((game) => (
+          {displayGames?.map((game: Game) => (
             <GameCard key={game?.slug} game={game} />
           ))}
 
@@ -69,7 +73,7 @@ const HomePageTemplate = ({
               key={category}
               category={category}
               meta={CATEGORY_META[category]}
-              games={games}
+              games={games as Game[]}
               scrollRefs={scrollRefs.current[category]}
               setSelectedCategory={setSelectedCategory}
             />
@@ -87,7 +91,7 @@ const HomePageTemplate = ({
               key={category}
               category={category}
               meta={CATEGORY_META[category]}
-              games={games}
+              games={games as Game[]}
               scrollRefs={scrollRefs.current[category]}
               setSelectedCategory={setSelectedCategory}
             />
@@ -99,12 +103,14 @@ const HomePageTemplate = ({
           <Loader isLoading={true} />
         </div>
       )}
-      {/* {isFetchingNextPage && <Loader isLoading={true} />} */}
     </div>
   );
 };
 
 export default HomePageTemplate;
+
+
+
 
 
 

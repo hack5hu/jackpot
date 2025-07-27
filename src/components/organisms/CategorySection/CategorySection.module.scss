@@ -1,5 +1,5 @@
-@import "@/globalStyles/colors.scss";
-@import "@/globalStyles/variables.scss";
+@use "@/globalStyles/variables.scss" as *;
+@use "@/globalStyles/colors.scss" as *;
 
 .section {
   padding-bottom: 5px;
@@ -9,6 +9,48 @@
   align-items: center;
   justify-content: space-between;
 }
+.scrollShadowWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    width: 40px;
+    height: 92%;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-blend-mode: multiply;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), transparent);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.7), transparent);
+  }
+
+  &.showLeft {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &.showRight {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
 .horizontalScroll {
   display: flex;
   overflow-x: auto;
@@ -18,7 +60,7 @@
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   position: relative;
-  margin-left: -0.75rem;
+  margin-left: -0.5rem;
 
   &::-webkit-scrollbar {
     height: 0px;
@@ -35,19 +77,24 @@
   height: 227px;
   border: 3px solid $primary-accent;
   border-radius: 6px;
-  padding: 1.5rem;
   margin-left: 0.75rem;
   margin-top: 0.75rem;
   overflow: hidden;
 
   @media (max-width: $breakpoint-mobile) {
-    width: 140px;
-    height: 190px;
+    width: 130px;
+    height: 180px;
   }
 
   @media (min-width: $breakpoint-desktop) {
-    width: 185px;
-    height: 240px;
+    width: 171px;
+    height: 227px;
+  }
+
+  &:hover {
+    transform: translateY(-3px) scale(1);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
   }
 }
 .viewAllTextWrapper {
@@ -68,3 +115,4 @@
   pointer-events: none;
   margin-top: 10px;
 }
+

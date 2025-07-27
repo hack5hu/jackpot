@@ -1,13 +1,9 @@
 import React from "react";
 import styles from "./CategoryTabBar.module.scss";
 import { CATEGORY_META } from "@/constants/constants";
+import { CategoryTabBarProps } from "./type";
 
-interface Props {
-  activeCategory: string | null;
-  onCategoryChange: (key: string) => void;
-}
-
-const CategoryTabBar: React.FC<Props> = ({
+const CategoryTabBar: React.FC<CategoryTabBarProps> = ({
   activeCategory = -1,
   onCategoryChange,
 }) => {

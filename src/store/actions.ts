@@ -1,5 +1,5 @@
 import { StateCreator } from "zustand";
-import { FilterState } from "./types";
+import { FilterState } from "@/store/types";
 
 export const createGameFilterSlice: StateCreator<FilterState> = (set) => ({
   searchQuery: "",
@@ -11,4 +11,5 @@ export const createGameFilterSlice: StateCreator<FilterState> = (set) => ({
   setSort: (sort) => set({ sort }),
   setCategory: (category) => set({ category }),
 });
+
 

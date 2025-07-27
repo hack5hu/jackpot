@@ -12,3 +12,4 @@ export const useSearchGames = () => {
     staleTime: 5 * 60 * 1000,
   });
 };
+

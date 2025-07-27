@@ -1,16 +1,15 @@
 "use client";
 
 import styles from "./page.module.scss";
-import HomePage from "@/components/pages/HomePage/HomePage";
-
+import HomeTemplate from "@/components/templates/HomeTemplate/HomeTemplate";
+import ImageSlider from "@/components/organisms/ImageSlider/ImageSlider";
 export default function Home() {
   return (
     <div className={styles.page}>
-      <HomePage/>
+      <div style={{ margin: 30 }} />
+      <ImageSlider />
+      <HomeTemplate />
     </div>
   );
 }
-
-
-
 
