@@ -115,7 +115,8 @@ Follows Atomic Design:
 ---
 
 ## 📷 Screenshots
-
+  ## Desktop
+  
 <div style="display: flex; overflow-x: auto; gap: 1rem; padding: 1rem 0;">
   <img src="https://github.com/hack5hu/jackpot/blob/main/public/1-jackpot-homepage.png?raw=true" width="300" />
   <img src="https://github.com/hack5hu/jackpot/blob/main/public/2-jackpot-search.png?raw=true" width="300" />
@@ -124,6 +125,11 @@ Follows Atomic Design:
   <img src="https://github.com/hack5hu/jackpot/blob/main/public/5-jackpot-favorite-unsort.png?raw=true" width="300" />
   <img src="https://github.com/hack5hu/jackpot/blob/main/public/6-jackpot-category-sort.png?raw=true" width="300" />
   <img src="https://github.com/hack5hu/jackpot/blob/main/public/7-jackpot-catgeory-unsort.png?raw=true" width="300" />
+</div>
+
+ ## Mobile
+ 
+ <div style="display: flex; overflow-x: auto; gap: 1rem; padding: 1rem 0;">
   <img src="https://github.com/hack5hu/jackpot/blob/main/public/8-jackpot-mobile.png?raw=true" width="150" />
   <img src="https://github.com/hack5hu/jackpot/blob/main/public/9-jackpot-mobile.png?raw=true" width="150" />
   <img src="https://github.com/hack5hu/jackpot/blob/main/public/10-jackpot-mobile.png?raw=true" width="150" />
